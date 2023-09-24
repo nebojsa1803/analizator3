@@ -1,8 +1,10 @@
 import styles from './Register.module.css'
-import { Form } from 'react-router-dom'
+import { Form, useNavigation } from 'react-router-dom'
 import InputRow from '../components/InputRow'
 
 const Register = () => {
+  const navigation = useNavigation()
+  const isSubmitting = navigation.state === 'submitting'
   return (
     <div className={styles.wrapper}>
       <Form className='form' method='POST'>
@@ -26,12 +28,8 @@ const Register = () => {
           inputType='password'
           labelText='Repeat Password'
         />
-        <button
-          type='submit'
-          className='btn btn-block'
-          style={{ marginTop: '0.5rem' }}
-        >
-          Submit
+        <button type='submit' className='btn btn-block' disabled={isSubmitting}>
+          {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
       </Form>
     </div>
