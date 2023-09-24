@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { About, Register, Landing, Error, Login, HomeLayout } from './pages'
 import { action as registerAction } from './pages/RegisterAction'
+import { action as loginAction } from './pages/LoginAction'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />,
+        action: loginAction,
       },
       {
         path: 'register',
